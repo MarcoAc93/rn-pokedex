@@ -1,0 +1,18 @@
+{
+  "searchBar": {
+    "search": "Buscar"
+  },
+  "header": {
+    "back": "Atras"
+  },
+  "pokemon": {
+    "height": "Altura",
+    "weight": "Peso",
+    "statistics": "ESTADISTICAS",
+    "attack": "Ataque",
+    "defense": "Defensa",
+    "specialAttack": "Atq Esp",
+    "specialDefense": "Def Esp",
+    "speed": "Velocidad"
+  }
+}
