@@ -25,6 +25,7 @@ const pokemonReducer = (state = initialState, action) => {
       return {
         ...state,
         pokemonsArray: action.payload,
+        pokemonsArrayTemp: action.payload,
         error: {},
       };
     case GET_ALL_POKEMONS_ERROR:
@@ -54,16 +55,16 @@ const pokemonReducer = (state = initialState, action) => {
       return {
         ...state,
         pokemonsArray: [...state.pokemonsArray, ...action.payload],
+        pokemonsArrayTemp: [...state.pokemonsArray, ...action.payload],
       };
     case SEARCH_POKEMON:
       let pokemonsArray = [];
       let pokemonsArrayTemp = [];
 
-      if (action.payload === '' && state.pokemonsArrayTemp.length > 0) {
+      if (action.payload === '') {
         pokemonsArray = state.pokemonsArrayTemp;
-        pokemonsArrayTemp = [];
-      } else if (state.pokemonsArrayTemp.length > state.pokemonsArray.length) {
         pokemonsArrayTemp = state.pokemonsArrayTemp;
+      } else {
         pokemonsArray = [
           ...state.pokemonsArrayTemp.filter(
             (pokemon) =>
@@ -71,15 +72,7 @@ const pokemonReducer = (state = initialState, action) => {
               getPokemonId(pokemon.url) === action.payload,
           ),
         ];
-      } else {
-        pokemonsArray = [
-          ...state.pokemonsArray.filter(
-            (pokemon) =>
-              pokemon.name.includes(action.payload) ||
-              getPokemonId(pokemon.url) === action.payload,
-          ),
-        ];
-        pokemonsArrayTemp = state.pokemonsArray;
+        pokemonsArrayTemp = state.pokemonsArrayTemp;
       }
       return {
         ...state,
