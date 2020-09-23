@@ -6,8 +6,8 @@ import es from '../locales/es.json';
 const locales = RNLocalize.getLocales();
 
 if (Array.isArray(locales)) {
-  // I18n.locale = locales[0].languageTag;
-  I18n.locale = 'es';
+  I18n.locale = locales[0].languageTag;
+  // I18n.locale = 'es';
 }
 
 I18n.fallbacks = true;
